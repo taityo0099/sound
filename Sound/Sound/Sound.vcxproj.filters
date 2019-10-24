@@ -13,10 +13,39 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{a3f8dcd7-7302-44b7-9b5c-24e7c21c94c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="XAudio2">
+      <UniqueIdentifier>{b53d9a57-6b04-4354-b135-d35836d5bede}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Voice">
+      <UniqueIdentifier>{84039569-4f4b-428b-ae35-2ba57618727f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="XAudio2\XAudio2.cpp">
+      <Filter>XAudio2</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Base\Singleton.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="XAudio2\XAudio2.h">
+      <Filter>XAudio2</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice.h">
+      <Filter>Voice</Filter>
+    </ClInclude>
+    <ClInclude Include="Info.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
