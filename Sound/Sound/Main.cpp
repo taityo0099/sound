@@ -3,8 +3,8 @@
 #include <ks.h>
 #include <ksmedia.h>
 #include <vector>
-
 #include "XAudio2/XAudio2.h"
+#include "Loader/Loader.h"
 
 #pragma comment(lib, "xaudio2.lib")
 
@@ -32,6 +32,8 @@ const unsigned int channel = 2;
 
 int main()
 {
+	Loader::Get().Load("Sample.wav");
+
 	auto hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 	_ASSERT(hr == S_OK);
 

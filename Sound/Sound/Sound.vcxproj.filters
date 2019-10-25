@@ -16,11 +16,14 @@
     <Filter Include="Base">
       <UniqueIdentifier>{a3f8dcd7-7302-44b7-9b5c-24e7c21c94c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Voice">
+      <UniqueIdentifier>{84039569-4f4b-428b-ae35-2ba57618727f}</UniqueIdentifier>
+    </Filter>
     <Filter Include="XAudio2">
       <UniqueIdentifier>{b53d9a57-6b04-4354-b135-d35836d5bede}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Voice">
-      <UniqueIdentifier>{84039569-4f4b-428b-ae35-2ba57618727f}</UniqueIdentifier>
+    <Filter Include="Loader">
+      <UniqueIdentifier>{1bbb3b0a-8bee-472c-ace2-2829c4b58088}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -31,7 +34,10 @@
       <Filter>XAudio2</Filter>
     </ClCompile>
     <ClCompile Include="Voice.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>Voice</Filter>
+    </ClCompile>
+    <ClCompile Include="Loader\Loader.cpp">
+      <Filter>Loader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +51,12 @@
       <Filter>Voice</Filter>
     </ClInclude>
     <ClInclude Include="Info.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Loader\Loader.h">
+      <Filter>Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="WavFmt.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Loader\Loader.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Voice.cpp" />
     <ClCompile Include="XAudio2\XAudio2.cpp" />
@@ -126,7 +127,9 @@
   <ItemGroup>
     <ClInclude Include="Base\Singleton.h" />
     <ClInclude Include="Info.h" />
+    <ClInclude Include="Loader\Loader.h" />
     <ClInclude Include="Voice.h" />
+    <ClInclude Include="WavFmt.h" />
     <ClInclude Include="XAudio2\XAudio2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
