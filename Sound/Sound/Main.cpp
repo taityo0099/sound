@@ -4,7 +4,8 @@
 #include <ksmedia.h>
 #include <vector>
 #include "XAudio2/XAudio2.h"
-#include "Loader/Loader.h"
+#include "Voice.h"
+#include <Windows.h>
 
 #pragma comment(lib, "xaudio2.lib")
 
@@ -32,27 +33,40 @@ const unsigned int channel = 2;
 
 int main()
 {
-	Loader::Get().Load("Sample.wav");
-
 	auto hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 	_ASSERT(hr == S_OK);
 
-	//波形データの情報
-	WAVEFORMATEXTENSIBLE fmt{};
-	fmt.Format.cbSize               = sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX);
-	fmt.Format.nSamplesPerSec       = sample;
-	fmt.Format.wBitsPerSample       = bit;
-	fmt.Format.nChannels            = channel;
-	fmt.Format.nBlockAlign          = fmt.Format.nChannels * fmt.Format.wBitsPerSample / 8;
-	fmt.Format.nAvgBytesPerSec      = fmt.Format.nSamplesPerSec * fmt.Format.nBlockAlign;
-	fmt.Format.wFormatTag           = WAVE_FORMAT_EXTENSIBLE;
-	fmt.dwChannelMask               = spk[fmt.Format.nChannels - 1];
-	fmt.Samples.wValidBitsPerSample = fmt.Format.wBitsPerSample;
-	fmt.SubFormat                   = KSDATAFORMAT_SUBTYPE_IEEE_FLOAT;
+	bool play = false;
+	bool key = false;
 
 	XAudio2::Get().EngineStart();
+	Voice* voice = new Voice("sample.wav");
 
+	while (!(GetKeyState(VK_ESCAPE) & 0x80))
+	{
+		if (GetKeyState(VK_SPACE) & 0x80)
+		{
+			if (key == false)
+			{
+				key = true;
+				play = (play == true) ? false : true;
+			}
+		}
+		else
+		{
+			key = false;
+		}
 
+		if (play == true)
+		{
+			voice->Play(true);
+		}
+		else
+		{
+			voice->Stop();
+		}
+	}
+	delete voice;
 	/*{
 		//オーディオ
 		Microsoft::WRL::ComPtr<IXAudio2>audio = nullptr;
@@ -70,8 +84,21 @@ int main()
 		//ソースボイス
 		IXAudio2SourceVoice* voice = nullptr;
 		{
-			hr = audio->CreateSourceVoice(&voice, (WAVEFORMATEX*)&fmt, 0, 1.0f, nullptr);
-			_ASSERT(hr == S_OK);
+
+		//波形データの情報
+			WAVEFORMATEXTENSIBLE fmt{};
+			fmt.Format.cbSize               = sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX);
+			fmt.Format.nSamplesPerSec       = sample;
+			fmt.Format.wBitsPerSample       = bit;
+			fmt.Format.nChannels            = channel;
+			fmt.Format.nBlockAlign          = fmt.Format.nChannels * fmt.Format.wBitsPerSample / 8;
+			fmt.Format.nAvgBytesPerSec      = fmt.Format.nSamplesPerSec * fmt.Format.nBlockAlign;
+			fmt.Format.wFormatTag           = WAVE_FORMAT_EXTENSIBLE;
+			fmt.dwChannelMask               = spk[fmt.Format.nChannels - 1];
+			fmt.Samples.wValidBitsPerSample = fmt.Format.wBitsPerSample;
+			fmt.SubFormat                   = KSDATAFORMAT_SUBTYPE_IEEE_FLOAT;
+					hr = audio->CreateSourceVoice(&voice, (WAVEFORMATEX*)&fmt, 0, 1.0f, nullptr);
+					_ASSERT(hr == S_OK);
 		}
 
 		//「ラ」の音

@@ -6,6 +6,7 @@
 XAudio2::XAudio2() : 
 	audio(nullptr), mastering(nullptr)
 {
+
 }
 
 // デストラクタ
@@ -19,6 +20,13 @@ void XAudio2::EngineStart(void)
 {
 	CreateAudio();
 	CreateMastring();
+
+#ifdef _DEBUG
+	XAUDIO2_DEBUG_CONFIGURATION debug{};
+	debug.BreakMask = XAUDIO2_LOG_ERRORS;
+	debug.TraceMask = XAUDIO2_LOG_ERRORS | XAUDIO2_LOG_WARNINGS;
+	audio->SetDebugConfiguration(&debug);
+#endif
 }
 
 // エンジン停止

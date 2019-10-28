@@ -2,18 +2,21 @@
 #include <string>
 
 struct IXAudio2SourceVoice;
+class VoiceCallback;
 
 class Voice
 {
+	friend VoiceCallback;
+
 public:
 	// コンストラクタ
 	Voice(const std::string& fileName);
 
 	// 読み込み
-	void Load(const std::string& fileName);
+	int Load(const std::string& fileName);
 
 	// 再生
-	void Play(void);
+	void Play(const bool& loop = false);
 
 	// 停止
 	void Stop(void);
@@ -46,4 +49,7 @@ private:
 
 	// ソースボイス
 	IXAudio2SourceVoice* voice;
+
+	// コールバック
+	std::unique_ptr<VoiceCallback>back;
 };
