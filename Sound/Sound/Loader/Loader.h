@@ -30,6 +30,9 @@ public:
 	// サウンドデータ取得
 	std::shared_ptr<std::vector<float>> GetWave(const std::string& fileName);
 
+	// 1回の処理データ取得
+	unsigned int GetFream(const std::string& fileName);
+
 private:
 	// コンストラクタ
 	Loader();
