@@ -60,11 +60,25 @@ int main()
 		if (play == true)
 		{
 			voice->Play(true);
+			if (GetKeyState(VK_UP) & 0x80)
+			{
+				voice->volume += 0.001f;
+			}
+			else if (GetKeyState(VK_DOWN) & 0x80)
+			{
+				voice->volume -= 0.001f;
+				if (voice->volume < 0.0f)
+				{
+					voice->volume = 0.0f;
+				}
+			}
 		}
 		else
 		{
 			voice->Stop();
 		}
+
+		printf("%f\n", voice->volume);
 	}
 	delete voice;
 	/*{

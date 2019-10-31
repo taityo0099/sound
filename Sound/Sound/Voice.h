@@ -24,6 +24,8 @@ public:
 	// デストラクタ
 	~Voice();
 
+	float volume;		//
+
 private:
 	// ソースボイス生成
 	void CreateVoice(void);

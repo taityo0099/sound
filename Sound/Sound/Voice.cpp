@@ -25,6 +25,8 @@ Voice::Voice(const std::string& fileName) :
 
 	Load(fileName);
 	CreateVoice();
+
+	volume = 1.0f;	//
 }
 
 // デストラクタ
@@ -91,17 +93,21 @@ void Voice::Stop(void)
 //バッファに波形を乗せる
 void Voice::Submit(void)
 {
-	size_t size = (read + Loader::Get().GetFream(name) > Loader::Get().GetWave(name)->size())
-		? read + Loader::Get().GetFream(name) - Loader::Get().GetWave(name)->size()
-		: Loader::Get().GetFream(name);
+	static std::vector<float>tmp;	//
 
-	//std::vector<float>tmp(&Loader::Get().GetWave(name)->at(read), &Loader::Get().GetWave(name)->at(read + size));
-	
-	
+	size_t size = (read + Loader::Get().GetFrame(name) > Loader::Get().GetWave(name)->size())
+		? read + Loader::Get().GetFrame(name) - Loader::Get().GetWave(name)->size()
+		: Loader::Get().GetFrame(name);
+
+	tmp.assign(&Loader::Get().GetWave(name)->at(read), &Loader::Get().GetWave(name)->at(read + size));
+	for (auto& i : tmp)
+	{
+		i *= volume;
+	}
 
 	XAUDIO2_BUFFER buffer{};
 	buffer.AudioBytes = sizeof(float) * size;
-	buffer.pAudioData = (unsigned char*)&Loader::Get().GetWave(name)->at(read);
+	buffer.pAudioData = (unsigned char*)tmp.data();
 	auto hr = voice->SubmitSourceBuffer(&buffer);
 	_ASSERT(hr == S_OK);
 

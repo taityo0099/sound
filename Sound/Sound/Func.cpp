@@ -39,7 +39,7 @@ std::vector<std::complex<float>> Func::IDFT(const std::vector<float>& Idata)
 			//ƒ°‚Ì’†g
 			inv[i] += Idata[k] * std::exp(-imaginary * 2.0f * std::acos(-1.0f) * float(i * k) / (float)Idata.size());
 		}
-		inv[i] / Idata.size;
+		inv[i].real(inv[i].real() / Idata.size());
 	}
 	
 	return inv;

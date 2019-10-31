@@ -52,7 +52,7 @@ std::shared_ptr<std::vector<float>> Loader::GetWave(const std::string & fileName
 }
 
 // 1‰ñ‚Ìˆ—ƒf[ƒ^æ“¾
-unsigned int Loader::GetFream(const std::string & fileName)
+unsigned int Loader::GetFrame(const std::string & fileName)
 {
 	if (sound.find(fileName) != sound.end())
 	{
