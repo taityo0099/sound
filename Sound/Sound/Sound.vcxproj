@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Func.cpp" />
     <ClCompile Include="Loader\Loader.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Voice.cpp" />
@@ -126,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\Singleton.h" />
+    <ClInclude Include="Func.h" />
     <ClInclude Include="Info.h" />
     <ClInclude Include="Loader\Loader.h" />
     <ClInclude Include="Voice.h" />

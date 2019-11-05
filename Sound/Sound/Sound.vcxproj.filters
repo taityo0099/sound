@@ -25,6 +25,9 @@
     <Filter Include="Loader">
       <UniqueIdentifier>{1bbb3b0a-8bee-472c-ace2-2829c4b58088}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Func">
+      <UniqueIdentifier>{359c2b02-2c4e-41d2-b41b-ec9f57b23495}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -38,6 +41,9 @@
     </ClCompile>
     <ClCompile Include="Loader\Loader.cpp">
       <Filter>Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="Func.cpp">
+      <Filter>Func</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="XAudio2\VoiceCallback.h">
       <Filter>XAudio2</Filter>
+    </ClInclude>
+    <ClInclude Include="Func.h">
+      <Filter>Func</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
