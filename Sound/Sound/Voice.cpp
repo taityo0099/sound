@@ -99,12 +99,15 @@ void Voice::Submit(void)
 		? read + Loader::Get().GetFrame(name) - Loader::Get().GetWave(name)->size()
 		: Loader::Get().GetFrame(name);
 
+
+
+
+
 	tmp.assign(&Loader::Get().GetWave(name)->at(read), &Loader::Get().GetWave(name)->at(read + size));
 	for (auto& i : tmp)
 	{
 		i *= volume;
 	}
-
 	XAUDIO2_BUFFER buffer{};
 	buffer.AudioBytes = sizeof(float) * size;
 	buffer.pAudioData = (unsigned char*)tmp.data();

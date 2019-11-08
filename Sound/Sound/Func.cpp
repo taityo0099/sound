@@ -23,7 +23,8 @@ std::vector<std::complex<float>> Func::DFT(const std::vector<float>& data)
 
 }
 
-std::vector<std::complex<float>> Func::IDFT(const std::vector<float>& Idata)
+//‹t—£Uƒt[ƒŠƒG•ÏŠ·
+std::vector<std::complex<float>> Func::RDFT(const std::vector<float>& Idata)
 {
 	std::vector<std::complex<float>>inv(Idata.size());
 

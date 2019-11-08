@@ -43,6 +43,14 @@ private:
 	// 読み込み位置
 	size_t read;
 
+	//フィルター係数
+	float a0, a1, a2, b0, b1, b2;
+
+	//バッファ係数
+	float out1, out2;
+	float in1, in2;
+	
+
 	// ループフラグ
 	bool loop;
 
