@@ -42,6 +42,8 @@ int main()
 	XAudio2::Get().EngineStart();
 	Voice* voice = new Voice("sample.wav");
 
+	voice->lowPassFilter(100, 1.0f);
+
 	while (!(GetKeyState(VK_ESCAPE) & 0x80))
 	{
 		if (GetKeyState(VK_SPACE) & 0x80)

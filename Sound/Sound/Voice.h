@@ -1,13 +1,14 @@
 #pragma once
 #include <string>
 
+#define MPI 3.1415926536			//円周率
+
 struct IXAudio2SourceVoice;
 class VoiceCallback;
 
 class Voice
 {
 	friend VoiceCallback;
-
 public:
 	// コンストラクタ
 	Voice(const std::string& fileName);
@@ -15,15 +16,21 @@ public:
 	// 読み込み
 	int Load(const std::string& fileName);
 
+	void lowPassFilter(unsigned int, float);
+
 	// 再生
 	void Play(const bool& loop = false);
 
 	// 停止
 	void Stop(void);
 
+	
+
 	// デストラクタ
 	~Voice();
 
+
+	//音量
 	float volume;		//
 
 private:
@@ -44,13 +51,19 @@ private:
 	size_t read;
 
 	//フィルター係数
-	float a0, a1, a2, b0, b1, b2;
+	float a0,a1,a2;
 
-	//バッファ係数
-	float out1, out2;
-	float in1, in2;
+	float b0,b1,b2;
+
+
+
+
+	//出力値
+	float out1,out2;
 	
-
+	//入力値
+	float in1,in2;
+	
 	// ループフラグ
 	bool loop;
 
