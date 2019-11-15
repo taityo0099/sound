@@ -42,7 +42,7 @@ int main()
 	XAudio2::Get().EngineStart();
 	Voice* voice = new Voice("sample.wav");
 
-	voice->lowPassFilter(100, 1.0f);
+	voice->LowPass(500);
 
 	while (!(GetKeyState(VK_ESCAPE) & 0x80))
 	{
@@ -64,11 +64,11 @@ int main()
 			voice->Play(true);
 			if (GetKeyState(VK_UP) & 0x80)
 			{
-				voice->volume += 0.001f;
+				voice->volume += 0.0001f;
 			}
 			else if (GetKeyState(VK_DOWN) & 0x80)
 			{
-				voice->volume -= 0.001f;
+				voice->volume -= 0.0001f;
 				if (voice->volume < 0.0f)
 				{
 					voice->volume = 0.0f;

@@ -2,6 +2,7 @@
 #include "XAudio2/XAudio2.h"
 #include "XAudio2/VoiceCallback.h"
 #include "Loader/Loader.h"
+#include "Filter.h"
 #include<wrl.h>
 #include<ks.h>
 #include<ksmedia.h>
@@ -27,6 +28,12 @@ Voice::Voice(const std::string& fileName) :
 	CreateVoice();
 
 	volume = 1.0f;	//
+
+	memset(a.data(), sizeof(float) * a.size(), 0);
+	memset(b.data(), sizeof(float) * b.size(), 0);
+	a[0] = b[0] = 1.0f;
+	memset(input.data(), sizeof(float) * input.size(), 0);
+	memset(output.data(), sizeof(float) * output.size(), 0);
 }
 
 // デストラクタ
@@ -74,37 +81,6 @@ void Voice::CreateVoice(void)
 
 }
 
-void Voice::lowPassFilter(unsigned int catf, float q)
-{
-	snd::Info info = Loader::Get().GetInfo(name);
-
-	// メンバー変数を初期化
-	a0 = 1.0f; // 0以外にしておかないと除算でエラーになる
-	a1 = 0.0f;
-	a2 = 0.0f;
-	b0 = 1.0f;
-	b1 = 0.0f;
-	b2 = 0.0f;
-
-	in1 = 0.0f;
-	in2 = 0.0f;
-
-	out1 = 0.0f;
-	out2 = 0.0f;
-
-	//フィルター
-	float omega = 2.0f * MPI * catf / info.sample;
-	float alpha = sin(omega) / (2.0f * q);
-
-	a0 = 1.0f + alpha;
-	a1 = -2.0f * cos(omega);
-	a2 = 1.0f * alpha;
-	b0 = (1.0f - cos(omega)) / 2.0f;
-	b1 = 1.0f - cos(omega);
-	b2 = (1.0f - cos(omega)) / 2.0f;
-
-}
-
 //再生
 void Voice::Play(const bool& loop)
 {
@@ -121,6 +97,41 @@ void Voice::Stop(void)
 	_ASSERT(hr == S_OK);
 }
 
+// ローパス設定
+void Voice::LowPass(const unsigned int & cutoff, const float & q)
+{
+	snd::Info info = Loader::Get().GetInfo(name);
+
+	float omega = 2.0f * 3.14159265f * float(cutoff) / float(info.sample);
+	float alpha = sin(omega) / (2.0f * q);
+
+	a[0] = 1.0f + alpha;
+	a[1] = -2.0f * cos(omega);
+	a[2] = 1.0f - alpha;
+	b[0] = (1.0f - cos(omega)) / 2.0f;
+	b[1] = 1.0f - cos(omega);
+	b[2] = (1.0f - cos(omega)) / 2.0f;
+}
+
+// フィルタ実行
+std::vector<float> Voice::Filter(const std::vector<float>& data)
+{
+	std::vector<float>tmp(data.size());
+	for (size_t i = 0; i < tmp.size(); ++i)
+	{
+		tmp[i] = b[0] / a[0] * data[i] + b[1] / a[0] * input[0] + b[2] / a[0] * input[1]
+			- a[1] / a[0] * output[0] - a[2] / a[0] * output[1];
+
+		std::swap(input[0], input[1]);
+		input[0] = data[i];
+
+		std::swap(output[0], output[1]);
+		output[0] = tmp[i];
+	}
+
+	return tmp;
+}
+
 //バッファに波形を乗せる
 void Voice::Submit(void)
 {
@@ -132,19 +143,7 @@ void Voice::Submit(void)
 
 	tmp.assign(&Loader::Get().GetWave(name)->at(read), &Loader::Get().GetWave(name)->at(read + size));
 
-	for (int i = 0; i < size; i++)
-	{
-		float out = b0 / a0 * tmp[i] + b1 / a0 * in1 + b2 / a0 * in2
-										- a1 / a0 * out1 - a2 / a0 * out2;
-
-		in2 = in1;
-		in1 = tmp[i];
-		
-		out2 = out1;
-		out1 = out;
-
-		tmp[i] = out;
-	}
+	tmp = Filter(tmp);
 
 	for (auto& i : tmp)
 	{

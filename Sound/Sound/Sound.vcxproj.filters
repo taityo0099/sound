@@ -28,6 +28,9 @@
     <Filter Include="Func">
       <UniqueIdentifier>{359c2b02-2c4e-41d2-b41b-ec9f57b23495}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FiIter">
+      <UniqueIdentifier>{0a6b4c14-5a5f-462b-80a9-83a2d717e160}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -44,6 +47,9 @@
     </ClCompile>
     <ClCompile Include="Func.cpp">
       <Filter>Func</Filter>
+    </ClCompile>
+    <ClCompile Include="Filter.cpp">
+      <Filter>FiIter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="Func.h">
       <Filter>Func</Filter>
+    </ClInclude>
+    <ClInclude Include="Filter.h">
+      <Filter>FiIter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
