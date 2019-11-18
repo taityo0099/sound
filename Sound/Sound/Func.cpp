@@ -1,8 +1,39 @@
 #include "Func.h"
 
+class Effect
+{
+public:
+	virtual void Execution() = 0;
+};
+
+class Volume :
+	public Effect
+{
+public:
+	Volume(){}
+	void Execution()
+	{
+		printf("a");
+	}
+private:
+
+};
+class Filter :
+	public Effect
+{
+public:
+	void Execution()
+	{
+		printf("b");
+	}
+};
+
 //ó£éUÉtÅ[ÉäÉGïœä∑
 std::vector<std::complex<float>> Func::DFT(const std::vector<float>& data)
 {
+	Volume v;
+	v.Execution();
+
 	std::vector<std::complex<float>>tmp(data.size());
 
 	const std::complex<float>imaginary(0, 1);

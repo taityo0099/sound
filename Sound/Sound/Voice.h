@@ -3,6 +3,9 @@
 #include <array>
 #include <vector>
 
+#define MPI 3.1415926536			//円周率
+
+
 struct IXAudio2SourceVoice;
 class VoiceCallback;
 
@@ -25,6 +28,9 @@ public:
 
 	// ローパス設定
 	void LowPass(const unsigned int& cutoff, const float& q = 1.0f / std::sqrt(2.0f));
+
+	// ハイパス設定
+	void HighPass(const unsigned int& cutoff, const float& q = 1.0f / std::sqrt(2.0f));
 
 	// フィルタ実行
 	std::vector<float> Filter(const std::vector<float>& data);

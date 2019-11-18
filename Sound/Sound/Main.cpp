@@ -6,6 +6,7 @@
 #include "XAudio2/XAudio2.h"
 #include "Voice.h"
 #include <Windows.h>
+#include "Filter.h"
 
 #pragma comment(lib, "xaudio2.lib")
 
@@ -36,13 +37,16 @@ int main()
 	auto hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 	_ASSERT(hr == S_OK);
 
+	Filter test;
+
 	bool play = false;
 	bool key = false;
 
 	XAudio2::Get().EngineStart();
 	Voice* voice = new Voice("sample.wav");
 
-	voice->LowPass(500);
+	//voice->LowPass(500);
+	voice->HighPass(20000);
 
 	while (!(GetKeyState(VK_ESCAPE) & 0x80))
 	{

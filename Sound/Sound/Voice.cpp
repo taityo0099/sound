@@ -102,16 +102,35 @@ void Voice::LowPass(const unsigned int & cutoff, const float & q)
 {
 	snd::Info info = Loader::Get().GetInfo(name);
 
-	float omega = 2.0f * 3.14159265f * float(cutoff) / float(info.sample);
+	float omega = 2.0f *  MPI * float(cutoff) / float(info.sample);
 	float alpha = sin(omega) / (2.0f * q);
 
 	a[0] = 1.0f + alpha;
 	a[1] = -2.0f * cos(omega);
 	a[2] = 1.0f - alpha;
+
 	b[0] = (1.0f - cos(omega)) / 2.0f;
 	b[1] = 1.0f - cos(omega);
 	b[2] = (1.0f - cos(omega)) / 2.0f;
 }
+
+// ハイパス設定
+void Voice::HighPass(const unsigned int & cutoff, const float & q)
+{
+	snd::Info info = Loader::Get().GetInfo(name);
+
+	float omega = 2.0f * MPI *float(cutoff) / float(info.sample);
+	float alpha = sin(omega) / (2.0f * q);
+
+	a[0] = 1.0f + alpha;
+	a[1] = -1.0f * cos(omega);
+	a[2] = 1.0f - alpha;
+
+	b[0] = alpha;
+	b[1] = 0.0f;
+	b[2] = -alpha;
+}
+
 
 // フィルタ実行
 std::vector<float> Voice::Filter(const std::vector<float>& data)

@@ -2,14 +2,24 @@
 #include<wrl.h>
 
 
-Filter::Filter()
+Filter::Filter() : 
+	threadEnd(false)
 {
+	if (th.joinable() == false)
+	{
+		th = std::thread(&Filter::Stream, this);
+	}
 	/*voice->lowPassFilter(100, 1.0f);*/
 }
 
 
 Filter::~Filter()
 {
+	threadEnd = true;
+	if (th.joinable() == true)
+	{
+		th.join();
+	}
 }
 
 
@@ -57,4 +67,14 @@ void Filter::lowPassFilter(unsigned int catf, float q)
 	//	tmp[i] = out;
 	//}
 	
+}
+
+
+//非同期用の関数
+void Filter::Stream()
+{
+	while (!threadEnd)
+	{
+		printf("フィルター\n");
+	}
 }

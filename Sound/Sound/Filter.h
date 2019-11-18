@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <xaudio2.h>
+#include<thread>
+
 
 #define MPI 3.1415926536			//円周率
 
@@ -15,6 +17,15 @@ public:
 	void lowPassFilter(unsigned int, float);
 
 private:
+	// スレッド
+	std::thread th;
+
+	// スレッド終了フラグ
+	bool threadEnd;
+
+	//非同期用の関数
+	void Stream(void);
+
 	//フィルター係数
 	float a0, a1, a2;
 
