@@ -11,18 +11,27 @@ namespace snd
 		//チャンネル数
 		unsigned char channel;
 
-		Info() {
+		//全初期化
+		Info() 
+		{
 			sample = bit = channel = 0;
 		}
+
+		//値で初期化
 		Info(const unsigned int& s, const unsigned char& b, const unsigned char& c) {
 			sample = s;
 			bit = b;
 			channel = c;
 		}
-		Info(const Info& info) {
-			(*this) = info;
+		
+		//
+		Info(const Info& info) 
+		{
+ 			(*this) = info;
 		}
-		void operator=(const Info& info) {
+
+		void operator=(const Info& info) 
+		{
 			sample  = info.sample;
 			bit     = info.bit;
 			channel = info.channel;

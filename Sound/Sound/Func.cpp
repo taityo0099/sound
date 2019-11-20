@@ -29,12 +29,12 @@ public:
 };
 
 //離散フーリエ変換
-std::vector<std::complex<float>> Func::DFT(const std::vector<float>& data)
+Comp Func::DFT(const std::vector<float>& data)
 {
 	Volume v;
 	v.Execution();
 
-	std::vector<std::complex<float>>tmp(data.size());
+	Comp tmp(data.size());
 
 	const std::complex<float>imaginary(0, 1);
 
@@ -55,9 +55,9 @@ std::vector<std::complex<float>> Func::DFT(const std::vector<float>& data)
 }
 
 //逆離散フーリエ変換
-std::vector<std::complex<float>> Func::RDFT(const std::vector<float>& Idata)
+Comp Func::RDFT(const std::vector<float>& Idata)
 {
-	std::vector<std::complex<float>>inv(Idata.size());
+	Comp inv(Idata.size());
 
 	const std::complex<float>imaginary(0, 1);
 

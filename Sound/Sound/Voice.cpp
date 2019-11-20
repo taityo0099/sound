@@ -156,9 +156,25 @@ void Voice::Submit(void)
 {
 	static std::vector<float>tmp;	//
 
-	size_t size = (read + Loader::Get().GetFrame(name) > Loader::Get().GetWave(name)->size())
+
+	//ŽO€‰‰ŽZŽq
+	/*size_t size = (read + Loader::Get().GetFrame(name) > Loader::Get().GetWave(name)->size())
 		? read + Loader::Get().GetFrame(name) - Loader::Get().GetWave(name)->size()
-		: Loader::Get().GetFrame(name);
+		: Loader::Get().GetFrame(name);*/
+
+
+	//if•¶
+	size_t size;
+	if ((read + Loader::Get().GetFrame(name) > Loader::Get().GetWave(name)->size()))
+	{
+		size = read + Loader::Get().GetFrame(name) - Loader::Get().GetWave(name)->size();
+	}
+	else
+	{
+		size = Loader::Get().GetFrame(name);
+	}
+
+
 
 	tmp.assign(&Loader::Get().GetWave(name)->at(read), &Loader::Get().GetWave(name)->at(read + size));
 

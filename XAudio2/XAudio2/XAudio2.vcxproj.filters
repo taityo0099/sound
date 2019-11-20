@@ -35,5 +35,8 @@
     <ClInclude Include="Sound\XAudio2\XAudio2.h">
       <Filter>XAudio2</Filter>
     </ClInclude>
+    <ClInclude Include="Sound\XAudio2\Info.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

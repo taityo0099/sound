@@ -2,6 +2,7 @@
 #include <string>
 #include <array>
 #include <vector>
+#include <memory>
 
 #define MPI 3.1415926536			//‰~Žü—¦
 

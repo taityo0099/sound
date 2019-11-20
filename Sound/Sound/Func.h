@@ -2,9 +2,11 @@
 #include<complex>
 #include<vector>
 
+using Comp = std::vector<std::complex<float>>;
+
 namespace Func
 {
-	std::vector<std::complex<float>>DFT(const std::vector<float>& data);
-	std::vector<std::complex<float>>RDFT(const std::vector<float>& Idata);
+	Comp DFT(const std::vector<float>& data);
+	Comp RDFT(const std::vector<float>& Idata);
 
 }
