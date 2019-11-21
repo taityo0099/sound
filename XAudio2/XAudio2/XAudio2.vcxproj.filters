@@ -13,30 +13,45 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="XAudio2">
-      <UniqueIdentifier>{365af686-43af-4c7d-8ffd-f205267331b3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Base">
-      <UniqueIdentifier>{cb642538-ddd1-4e3d-b7d5-7e2be30b5cef}</UniqueIdentifier>
+      <UniqueIdentifier>{d1d6bc93-65e9-44cf-a6cb-350d28c24c51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="XAudio2">
+      <UniqueIdentifier>{c0a69723-34fd-40a2-a090-03836e1cf7e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effect">
+      <UniqueIdentifier>{0d159bcd-6f72-4c54-a98c-f55507eae42c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effecter">
+      <UniqueIdentifier>{4c4c985f-39b0-42e0-af8c-21f02ca97265}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SoundBox\XAudio2\XAudio2.cpp">
+      <Filter>XAudio2</Filter>
+    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Sound\XAudio2\XAudio2.cpp">
-      <Filter>XAudio2</Filter>
+    <ClCompile Include="SoundBox\Effect\Effect.cpp">
+      <Filter>Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundBox\Effecter\Effecter.cpp">
+      <Filter>Effecter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sound\Base\Singleton.h">
+    <ClInclude Include="SoundBox\Base\Singleton.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="Sound\XAudio2\XAudio2.h">
+    <ClInclude Include="SoundBox\XAudio2\XAudio2.h">
       <Filter>XAudio2</Filter>
     </ClInclude>
-    <ClInclude Include="Sound\XAudio2\Info.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="SoundBox\Effect\Effect.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundBox\Effecter\Effecter.h">
+      <Filter>Effecter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

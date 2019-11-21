@@ -71,14 +71,14 @@
     <ClInclude Include="WavFmt.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="XAudio2\VoiceCallback.h">
-      <Filter>XAudio2</Filter>
-    </ClInclude>
     <ClInclude Include="Func.h">
       <Filter>Func</Filter>
     </ClInclude>
     <ClInclude Include="Filter.h">
       <Filter>FiIter</Filter>
+    </ClInclude>
+    <ClInclude Include="XAudio2\VoiceCallback.h">
+      <Filter>XAudio2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

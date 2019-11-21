@@ -23,7 +23,6 @@ Filter::~Filter()
 }
 
 
-
 void Filter::lowPassFilter(unsigned int catf, float q)
 {
 	//snd::Info info = Loader::Get().GetInfo(name);

@@ -11,27 +11,27 @@
 
 #pragma comment(lib, "xaudio2.lib")
 
-// スピーカ一覧
-const unsigned long spk[] = {
-	KSAUDIO_SPEAKER_MONO,
-	KSAUDIO_SPEAKER_STEREO,
-	KSAUDIO_SPEAKER_STEREO | SPEAKER_LOW_FREQUENCY,
-	KSAUDIO_SPEAKER_QUAD,
-	0,
-	KSAUDIO_SPEAKER_5POINT1,
-	0,
-	KSAUDIO_SPEAKER_7POINT1_SURROUND
-};
+//// スピーカ一覧
+//const unsigned long spk[] = {
+//	KSAUDIO_SPEAKER_MONO,
+//	KSAUDIO_SPEAKER_STEREO,
+//	KSAUDIO_SPEAKER_STEREO | SPEAKER_LOW_FREQUENCY,
+//	KSAUDIO_SPEAKER_QUAD,
+//	0,
+//	KSAUDIO_SPEAKER_5POINT1,
+//	0,
+//	KSAUDIO_SPEAKER_7POINT1_SURROUND
+//};
 
 // 破棄
 #define Desctory(X) { if((X) != nullptr) (X)->DestroyVoice(); (X) = nullptr; }
 
-//サンプリング周波数
-const unsigned int sample = 44100;
-//量子化ビット数
-const unsigned int bit = 32;
-//チャンネル
-const unsigned int channel = 2;
+////サンプリング周波数
+//const unsigned int sample = 44100;
+////量子化ビット数
+//const unsigned int bit = 32;
+////チャンネル
+//const unsigned int channel = 2;
 
 int main()
 {

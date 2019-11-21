@@ -1,7 +1,3 @@
-#include <xaudio2.h>
+#include<xaudio2.h>
 
-#pragma comment(lib,"xaudio2.lib")
-int main()
-{
-
-}
+#pragma comment(lib,"XAudio2.lib")
