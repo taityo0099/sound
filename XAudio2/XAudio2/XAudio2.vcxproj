@@ -118,12 +118,18 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SoundBox\Effecter\Effecter.cpp" />
     <ClCompile Include="SoundBox\Effect\Effect.cpp" />
+    <ClCompile Include="SoundBox\Loader\Loader.cpp" />
+    <ClCompile Include="SoundBox\Voice\Voice.cpp" />
     <ClCompile Include="SoundBox\XAudio2\XAudio2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SoundBox\Base\Singleton.h" />
     <ClInclude Include="SoundBox\Effecter\Effecter.h" />
     <ClInclude Include="SoundBox\Effect\Effect.h" />
+    <ClInclude Include="SoundBox\Info.h" />
+    <ClInclude Include="SoundBox\Loader\Loader.h" />
+    <ClInclude Include="SoundBox\Voice\Voice.h" />
+    <ClInclude Include="SoundBox\WavFmt.h" />
     <ClInclude Include="SoundBox\XAudio2\XAudio2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -25,6 +25,12 @@
     <Filter Include="Effecter">
       <UniqueIdentifier>{4c4c985f-39b0-42e0-af8c-21f02ca97265}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Voice">
+      <UniqueIdentifier>{f5fb9017-8fe9-43d0-9a50-e56e705921f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Loader">
+      <UniqueIdentifier>{b4e69fc8-1476-4d59-a20f-3ae569c2ce82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SoundBox\XAudio2\XAudio2.cpp">
@@ -39,6 +45,12 @@
     <ClCompile Include="SoundBox\Effecter\Effecter.cpp">
       <Filter>Effecter</Filter>
     </ClCompile>
+    <ClCompile Include="SoundBox\Voice\Voice.cpp">
+      <Filter>Voice</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundBox\Loader\Loader.cpp">
+      <Filter>Loader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SoundBox\Base\Singleton.h">
@@ -52,6 +64,18 @@
     </ClInclude>
     <ClInclude Include="SoundBox\Effecter\Effecter.h">
       <Filter>Effecter</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundBox\WavFmt.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundBox\Info.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundBox\Voice\Voice.h">
+      <Filter>Voice</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundBox\Loader\Loader.h">
+      <Filter>Loader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

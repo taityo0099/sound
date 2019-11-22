@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <xaudio2.h>
-#include<thread>
+#include <thread>
 
 
 #define MPI 3.1415926536			//‰~Žü—¦
