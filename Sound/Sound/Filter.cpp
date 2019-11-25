@@ -2,25 +2,25 @@
 #include<wrl.h>
 
 
-Filter::Filter() : 
-	threadEnd(false)
-{
-	/*if (th.joinable() == false)
-	{
-		th = std::thread(&Filter::Stream, this);
-	}*/
-	/*voice->lowPassFilter(100, 1.0f);*/
-}
-
-
-Filter::~Filter()
-{
-	/*threadEnd = true;
-	if (th.joinable() == true)
-	{
-		th.join();
-	}*/
-}
+//Filter::Filter() : 
+//	threadEnd(false)
+//{
+//	/*if (th.joinable() == false)
+//	{
+//		th = std::thread(&Filter::Stream, this);
+//	}*/
+//	/*voice->lowPassFilter(100, 1.0f);*/
+//}
+//
+//
+//Filter::~Filter()
+//{
+//	/*threadEnd = true;
+//	if (th.joinable() == true)
+//	{
+//		th.join();
+//	}*/
+//}
 
 
 void Filter::lowPassFilter(unsigned int catf, float q)

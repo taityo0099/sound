@@ -7,7 +7,7 @@
 namespace wav
 {
 	int Load(const std::string& fileName,
-		std::shared_ptr<std::vector<float>>& wave, sound::Info& info)
+		std::shared_ptr<std::vector<float>>& wave, snd::Info& info)
 	{
 		FILE* fp = nullptr;
 		if (fopen_s(&fp, fileName.c_str(), "rb")!= 0)

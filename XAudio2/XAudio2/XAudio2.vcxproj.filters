@@ -77,5 +77,8 @@
     <ClInclude Include="SoundBox\Loader\Loader.h">
       <Filter>Loader</Filter>
     </ClInclude>
+    <ClInclude Include="SoundBox\XAudio2\VoiceCallback.h">
+      <Filter>XAudio2</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

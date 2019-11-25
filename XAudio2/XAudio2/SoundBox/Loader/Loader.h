@@ -16,7 +16,7 @@ class Loader : public Singleton<Loader>
 	struct  Sound
 	{
 		//サウンド情報
-		sound::Info info;
+		snd::Info info;
 
 		//サウンドデータ
 		std::shared_ptr<Vfloat>wave;
@@ -27,7 +27,7 @@ public:
 	int Load(const std::string& fileName);
 	
 	//サウンド情報取得
-	sound::Info GetInfo(const std::string& fileName);
+	snd::Info GetInfo(const std::string& fileName);
 
 	//サウンドデータ取得
 	std::shared_ptr<Vfloat> GetWave(const std::string& fileName);

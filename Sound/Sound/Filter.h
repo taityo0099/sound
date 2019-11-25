@@ -10,8 +10,8 @@
 class Filter
 {
 public:
-	Filter();
-	~Filter();
+	Filter() {};
+	~Filter() {};
 
 	//ƒ[ƒpƒX
 	void lowPassFilter(unsigned int, float);

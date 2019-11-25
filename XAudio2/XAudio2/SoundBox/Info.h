@@ -1,6 +1,6 @@
 #pragma once
 
-namespace sound
+namespace snd
 {
 	struct  Info
 	{
