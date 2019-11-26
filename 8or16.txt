@@ -1,0 +1,28 @@
+*outData = std::make_shared<std::vector<float>>(size / (fmt.bit / 8));
+		switch (fmt.bit)
+		{
+		case 8:
+		{
+			std::vector<unsigned char>tmp(outData->size());
+			fread_s(tmp.data(), sizeof(tmp[0]) * tmp.size(), sizeof(tmp[0]) * tmp.size(), 1, file);
+			outData->assign(tmp.begin(), tmp.end());
+			for (float& i : *outData)
+			{
+				i = (i / float(0xff / 2)) - 1.0f;
+			}
+			break;
+		}
+		case 16:
+		{
+			std::vector<short>tmp(outData->size());
+			fread_s(tmp.data(), sizeof(tmp[0]) * tmp.size(), sizeof(tmp[0]) * tmp.size(), 1, file);
+			outData->assign(tmp.begin(), tmp.end());
+			for (float& i : *outData)
+			{
+				i /= float(0xffff / 2);
+			}
+			break;
+		}
+		default:
+			break;
+		}*/
