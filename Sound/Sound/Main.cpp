@@ -44,7 +44,7 @@ int main()
 	bool key = false;
 
 	XAudio2::Get().EngineStart();
-	Voice* voice = new Voice("sample3.wav");
+	Voice* voice = new Voice("sample2.wav");
 
 
 
@@ -82,18 +82,18 @@ int main()
 					voice->volume = 0.0f;
 				}
 			}
-			if (GetKeyState(VK_RSHIFT) & 0x80)
+			if (GetKeyState(VK_LCONTROL) & 0x80)
 			{
 				voice->LowPass(1000);
 			}
 			if (GetKeyState(VK_LSHIFT) & 0x80)
 			{
-				voice->HighPass(1000);
+				voice->HighPass(10000);
 			}
-			/*if (GetKeyState(VK_LCONTROL) & 0x80)
+			if (GetKeyState(VK_RSHIFT) & 0x80)
 			{
-				
-			}*/
+				voice->LowPass(60000);
+			}
 		}
 		else
 		{

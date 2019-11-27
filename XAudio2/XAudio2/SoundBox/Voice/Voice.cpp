@@ -2,14 +2,9 @@
 #include "../XAudio2/XAudio2.h"
 #include "../XAudio2/VoiceCallback.h"
 #include "../Loader/Loader.h"
-<<<<<<< Updated upstream
-#include <ks.h>
-#include <ksmedia.h>
-=======
 #include<wrl.h>
 #include<ks.h>
 #include<ksmedia.h>
->>>>>>> Stashed changes
 
 const unsigned long spk[] = {
 	KSAUDIO_SPEAKER_MONO,
@@ -22,32 +17,15 @@ const unsigned long spk[] = {
 	KSAUDIO_SPEAKER_7POINT1_SURROUND
 };
 
-<<<<<<< Updated upstream
 
-//コンストラクタ
-Voice::Voice(const std::string& fileName):read(0),loop(false),end(false),voice(nullptr)
-=======
 // コンストラクタ
 Voice::Voice(const std::string & fileName) : read(0),loop(false),end(false),voice(nullptr)
->>>>>>> Stashed changes
 {
 	back = std::make_unique<VoiceCallback>(this);
 
 	Load(fileName);
 	CreateVoice();
-<<<<<<< Updated upstream
-}
 
-//デストラクタ
-Voice::~Voice()
-{
-}
-
-//読み込み
-int Voice::Load(const std::string& fileName)
-=======
-
-	volume = 1.0f;
 }
 
 // デストラクタ
@@ -61,7 +39,6 @@ Voice::~Voice()
 
 // 読み込み
 int Voice::Load(const std::string & fileName)
->>>>>>> Stashed changes
 {
 	auto hr = Loader::Get().Load(fileName);
 	if (hr == 0)
@@ -71,26 +48,7 @@ int Voice::Load(const std::string & fileName)
 	return hr;
 }
 
-<<<<<<< Updated upstream
-//再生
-void Voice::Play(const bool& loop)
-{
-	auto hr = voice->Start();
-	_ASSERT(hr == S_OK);
-
-	this->loop = loop;
-}
-
-//停止
-void Voice::Stop(void)
-{
-	auto hr = voice->Stop();
-	_ASSERT(hr == S_OK);
-}
-
-=======
 // ソースボイス生成
->>>>>>> Stashed changes
 void Voice::CreateVoice(void)
 {
 	snd::Info info = Loader::Get().GetInfo(name);
@@ -111,15 +69,7 @@ void Voice::CreateVoice(void)
 
 	auto hr = XAudio2::Get().GetAudio()->CreateSourceVoice(&voice, (WAVEFORMATEX*)&fmt, 0, 1.0f, &(*back));
 	_ASSERT(hr == S_OK);
-<<<<<<< Updated upstream
 
-}
-
-void Voice::Submit(void)
-{
-}
-
-=======
 }
 
 // 再生
@@ -175,7 +125,6 @@ void Voice::Submit(void)
 }
 
 // 波形を全部読みこんだか判定
->>>>>>> Stashed changes
 void Voice::CheckEnd(void)
 {
 	if (read >= Loader::Get().GetWave(name)->size())
@@ -184,10 +133,6 @@ void Voice::CheckEnd(void)
 		{
 			Stop();
 		}
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 		read = 0;
 	}
 }

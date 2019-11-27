@@ -1,21 +1,14 @@
 #pragma once
-<<<<<<< Updated upstream
-#include "../Voice.h"
-=======
 #include "../Voice/Voice.h"
->>>>>>> Stashed changes
 #include <xaudio2.h>
+
+
 
 class VoiceCallback :
 	public IXAudio2VoiceCallback
 {
 public:
 	// コンストラクタ
-<<<<<<< Updated upstream
-=======
-	VoiceCallback() {
-	}
->>>>>>> Stashed changes
 	VoiceCallback(Voice* voice) : voice(voice) {}
 	// デストラクタ
 	~VoiceCallback() {}
