@@ -7,7 +7,6 @@
 #include <unordered_map>
 
 
-using Vfloat = std::vector<float>;
 
 class Loader : public Singleton<Loader>
 {
@@ -19,7 +18,7 @@ class Loader : public Singleton<Loader>
 		snd::Info info;
 
 		//サウンドデータ
-		std::shared_ptr<Vfloat>wave;
+		std::shared_ptr<std::vector<float>>wave;
 	};
 
 public:
@@ -30,7 +29,7 @@ public:
 	snd::Info GetInfo(const std::string& fileName);
 
 	//サウンドデータ取得
-	std::shared_ptr<Vfloat> GetWave(const std::string& fileName);
+	std::shared_ptr<std::vector<float>> GetWave(const std::string& fileName);
 
 	//1回の処理データ取得
 	unsigned int GetFrame(const std::string& fileName);

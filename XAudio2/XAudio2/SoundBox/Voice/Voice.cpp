@@ -2,9 +2,18 @@
 #include "../XAudio2/XAudio2.h"
 #include "../XAudio2/VoiceCallback.h"
 #include "../Loader/Loader.h"
+<<<<<<< HEAD
+#include <ks.h>
+#include <ksmedia.h>
 #include<wrl.h>
 #include<ks.h>
 #include<ksmedia.h>
+
+=======
+#include<wrl.h>
+#include<ks.h>
+#include<ksmedia.h>
+>>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
 
 const unsigned long spk[] = {
 	KSAUDIO_SPEAKER_MONO,
@@ -17,7 +26,10 @@ const unsigned long spk[] = {
 	KSAUDIO_SPEAKER_7POINT1_SURROUND
 };
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
 // コンストラクタ
 Voice::Voice(const std::string & fileName) : read(0),loop(false),end(false),voice(nullptr)
 {
@@ -25,7 +37,10 @@ Voice::Voice(const std::string & fileName) : read(0),loop(false),end(false),voic
 
 	Load(fileName);
 	CreateVoice();
+<<<<<<< HEAD
+=======
 
+>>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
 }
 
 // デストラクタ
@@ -47,6 +62,8 @@ int Voice::Load(const std::string & fileName)
 	}
 	return hr;
 }
+<<<<<<< HEAD
+=======
 
 // ソースボイス生成
 void Voice::CreateVoice(void)
@@ -72,6 +89,7 @@ void Voice::CreateVoice(void)
 
 }
 
+>>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
 // 再生
 void Voice::Play(const bool & loop)
 {
@@ -93,11 +111,11 @@ void Voice::Submit(void)
 {
 	static std::vector<float>tmp;
 
-	//三項演算子
-	size_t size = (read + Loader::Get().GetFrame(name) >= Loader::Get().GetWave(name)->size())
-		? read + Loader::Get().GetFrame(name) - Loader::Get().GetWave(name)->size()
-		: Loader::Get().GetFrame(name);
-	/*size_t size;
+	////三項演算子
+	//size_t size = (read + Loader::Get().GetFrame(name) >= Loader::Get().GetWave(name)->size())
+	//	? read + Loader::Get().GetFrame(name) - Loader::Get().GetWave(name)->size()
+	//	: Loader::Get().GetFrame(name);
+	size_t size;
 	if (read + Loader::Get().GetFrame(name) > Loader::Get().GetWave(name)->size())
 	{
 		size = read + Loader::Get().GetFrame(name) - Loader::Get().GetWave(name)->size();
@@ -105,7 +123,7 @@ void Voice::Submit(void)
 	else
 	{
 		size = Loader::Get().GetFrame(name);
-	}*/
+	}
 
 
 	tmp.assign(&Loader::Get().GetWave(name)->at(read), &Loader::Get().GetWave(name)->at(read + size));
@@ -118,6 +136,7 @@ void Voice::Submit(void)
 	XAUDIO2_BUFFER buffer{};
 	buffer.AudioBytes = sizeof(float) * size;
 	buffer.pAudioData = (unsigned char*)tmp.data();
+
 	auto hr = voice->SubmitSourceBuffer(&buffer);
 	_ASSERT(hr == S_OK);
 
