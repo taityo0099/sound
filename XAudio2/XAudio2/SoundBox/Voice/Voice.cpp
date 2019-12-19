@@ -2,18 +2,15 @@
 #include "../XAudio2/XAudio2.h"
 #include "../XAudio2/VoiceCallback.h"
 #include "../Loader/Loader.h"
-<<<<<<< HEAD
 #include <ks.h>
 #include <ksmedia.h>
 #include<wrl.h>
 #include<ks.h>
 #include<ksmedia.h>
 
-=======
 #include<wrl.h>
 #include<ks.h>
 #include<ksmedia.h>
->>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
 
 const unsigned long spk[] = {
 	KSAUDIO_SPEAKER_MONO,
@@ -26,10 +23,7 @@ const unsigned long spk[] = {
 	KSAUDIO_SPEAKER_7POINT1_SURROUND
 };
 
-<<<<<<< HEAD
-=======
 
->>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
 // コンストラクタ
 Voice::Voice(const std::string & fileName) : read(0),loop(false),end(false),voice(nullptr)
 {
@@ -37,10 +31,6 @@ Voice::Voice(const std::string & fileName) : read(0),loop(false),end(false),voic
 
 	Load(fileName);
 	CreateVoice();
-<<<<<<< HEAD
-=======
-
->>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
 }
 
 // デストラクタ
@@ -62,8 +52,6 @@ int Voice::Load(const std::string & fileName)
 	}
 	return hr;
 }
-<<<<<<< HEAD
-=======
 
 // ソースボイス生成
 void Voice::CreateVoice(void)
@@ -89,7 +77,6 @@ void Voice::CreateVoice(void)
 
 }
 
->>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
 // 再生
 void Voice::Play(const bool & loop)
 {

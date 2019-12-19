@@ -1,9 +1,5 @@
 #pragma once
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-#include "../Voice.h"
-=======
->>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
+
 #include "../Voice/Voice.h"
 #include <xaudio2.h>
 
@@ -14,11 +10,8 @@ class VoiceCallback :
 {
 public:
 	// コンストラクタ
-<<<<<<< HEAD
-	VoiceCallback() {
-	}
-=======
->>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
+	VoiceCallback() {}
+
 	VoiceCallback(Voice* voice) : voice(voice) {}
 	// デストラクタ
 	~VoiceCallback() {}

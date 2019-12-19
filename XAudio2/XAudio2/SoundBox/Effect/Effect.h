@@ -1,17 +1,23 @@
 #pragma once
-#include <array>
+#include <string>
+#include <vector>
+
+
+#define MPI  3.14159265
+
 
 class Effect
 {
+
 public:
 	
 };
+
 
 class Volume :public Effect
 {
 public:
 	Volume();
-
 	~Volume();
 
 	
@@ -19,15 +25,40 @@ private:
 	//音量
 	float volume;
 };
+
+
+
 class Filter :public Effect
 {
 public:
+	//コンストラクタ
+	Filter();
+
+	//デストラクタ
+	~Filter();
+
 	// ローパスフィルター
-	void LowPass(const unsigned int& cutoff, const float& q = 1.0f / std::sqrt(2.0f));
+	void LowPass(const unsigned int  & sample,const unsigned int& cutoff, const float& q = 1.0f / std::sqrt(2.0f));
 	
 	//ハイパスフィルター
-	void HighPass(const unsigned int & cutoff, const float& q = 1.0f / std::sqrt(2.0f));
+	void HighPass(const unsigned int & sample, const unsigned int & cutoff, const float& q = 1.0f / std::sqrt(2.0f));
 
-private:
-	
+	//実行
+	void Execution(const std::vector<float>& input);
+
+	// 参照ファイル名
+	std::string name;
+
+	Filter(const Filter&) = delete;
+	void operator=(const Filter&) = delete;
+
+	//入力値
+	float in[2];
+
+	//出力値
+	float out[2];
+
+	//フィルター係数
+	float a[2];
+	float b[2];
 };

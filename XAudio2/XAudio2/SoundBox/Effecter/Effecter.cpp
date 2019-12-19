@@ -4,17 +4,19 @@
 #include <thread>
 #include <mutex>
 #include "../Voice/Voice.h"
+#include "../Effect/Effect.h"
 
 
 
-Filter::Filter() : threadEnd(false)
+Effecter::Effecter() : threadEnd(false)
 {
 	if (th.joinable() == false)
 	{
-		th = std::thread(&Filter::Stream, this);
+		th = std::thread(&Effecter::Stream, this);
 	}
 }
-Filter::~Filter()
+
+Effecter ::~Effecter()
 {
 	threadEnd = true;
 	if (th.joinable() == true)
@@ -24,7 +26,7 @@ Filter::~Filter()
 }
 
 //”ñ“¯Šú—p‚ÌŠÖ”
-void Filter::Stream()
+void Effecter::Stream()
 {
 	while (!threadEnd)
 	{
@@ -34,27 +36,27 @@ void Filter::Stream()
 
 
 //------------------------
-int main()
-{
-	int num = 10;
-
-	std::thread th;
-
-	if (th.joinable() == false)
-	{
-		th = std::thread([&](const int& num)->void
-		{
-			while (true)
-			{
-
-			}
-		}, std::ref(num));
-	}
-
-	if (th.joinable() == true)
-	{
-		th.join();
-	}
-}
+//int main()
+//{
+//	int num = 10;
+//
+//	std::thread th;
+//
+//	if (th.joinable() == false)
+//	{
+//		th = std::thread([&](const int& num)->void
+//		{
+//			while (true)
+//			{
+//
+//			}
+//		}, std::ref(num));
+//	}
+//
+//	if (th.joinable() == true)
+//	{
+//		th.join();
+//	}
+//}
 //------------------------
 

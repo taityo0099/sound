@@ -12,16 +12,6 @@ Loader::~Loader()
 {
 }
 
-<<<<<<< HEAD
-// “Ç‚Ýž‚Ý
-int Loader::Load(const std::string & fileName)
-{
-	if (sound.find(fileName) != sound.end())
-	{
-		return 0;
-	}
-
-=======
 //“Ç‚Ýž‚Ý
 int Loader::Load(const std::string & fileName)
 {
@@ -29,7 +19,6 @@ int Loader::Load(const std::string & fileName)
 	{
 		return 0;
 	}
->>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
 	return wav::Load(fileName, sound[fileName].wave, sound[fileName].info);
 }
 
@@ -40,10 +29,7 @@ snd::Info Loader::GetInfo(const std::string & fileName)
 	{
 		return sound[fileName].info;
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
 	return snd::Info();
 }
 
@@ -54,10 +40,7 @@ std::shared_ptr<std::vector<float>> Loader::GetWave(const std::string & fileName
 	{
 		return sound[fileName].wave;
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
 	return nullptr;
 }
 
@@ -66,10 +49,7 @@ unsigned int Loader::GetFrame(const std::string & fileName)
 {
 	if (sound.find(fileName) != sound.end())
 	{
-<<<<<<< HEAD
-=======
 		//Ø‚è—Ç‚­0.01•b
->>>>>>> c662ef88ab90714444cd08206c8a63b83f4316ad
 		return (sound[fileName].info.sample * sound[fileName].info.channel) / 100;
 	}
 
