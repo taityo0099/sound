@@ -83,5 +83,3 @@ private:
 	//過去出力データ
 	std::array<float, 2>output;
 };
-
-enum class Fil { };

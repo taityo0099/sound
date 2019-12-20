@@ -44,7 +44,7 @@ int main()
 	bool key = false;
 
 	XAudio2::Get().EngineStart();
-	Voice* voice = new Voice("Sunday.wav");
+	Voice* voice = new Voice("bgm/Sunday.wav");
 
 
 
