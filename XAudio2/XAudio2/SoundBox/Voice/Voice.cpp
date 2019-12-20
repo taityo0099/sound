@@ -2,15 +2,14 @@
 #include "../XAudio2/XAudio2.h"
 #include "../XAudio2/VoiceCallback.h"
 #include "../Loader/Loader.h"
-#include <ks.h>
-#include <ksmedia.h>
 #include<wrl.h>
 #include<ks.h>
 #include<ksmedia.h>
+#include <mutex>
+#include<condition_variable>
+#include <thread>
 
-#include<wrl.h>
-#include<ks.h>
-#include<ksmedia.h>
+
 
 const unsigned long spk[] = {
 	KSAUDIO_SPEAKER_MONO,
@@ -80,7 +79,7 @@ void Voice::CreateVoice(void)
 // Ä¶
 void Voice::Play(const bool & loop)
 {
-	auto hr = voice->Start();
+	auto hr = voice->Start(); 
 	_ASSERT(hr == S_OK);
 
 	this->loop = loop;
@@ -114,6 +113,8 @@ void Voice::Submit(void)
 
 
 	tmp.assign(&Loader::Get().GetWave(name)->at(read), &Loader::Get().GetWave(name)->at(read + size));
+
+	std::unique_lock<std::mutex> uniq_lock(mtx);
 
 	for (auto& i : tmp)
 	{

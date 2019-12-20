@@ -3,6 +3,8 @@
 #include <array>
 #include <vector>
 #include <memory>
+#include <mutex>
+#include <thread>
 
 #define MPI 3.1415926536			//円周率
 
@@ -11,7 +13,7 @@
 struct IXAudio2SourceVoice;
 class VoiceCallback;
 
-class Voice
+class Voice : Voice
 {
 	friend VoiceCallback;
 public:
@@ -29,13 +31,15 @@ public:
 	//停止
 	void Stop(void);
 
-
-private:
-
 	//音量
 	float volume;
-
 private:
+	// スレッド
+	std::thread th;
+
+	//ミューテックス
+	std::mutex mtx;
+
 	//ソースボイス生成
 	void CreateVoice(void);
 
@@ -64,3 +68,14 @@ private:
 	//コールバック
 	std::unique_ptr<VoiceCallback>back;
 };
+
+//class Volume
+//{
+//public:
+//	Volume();
+//	~Volume();
+//
+//private:
+//	//音量
+//	float volume;
+//};

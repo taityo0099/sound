@@ -12,13 +12,14 @@ Loader::~Loader()
 {
 }
 
-//“Ç‚İ‚İ
+// “Ç‚İ‚İ
 int Loader::Load(const std::string & fileName)
 {
-	if (sound.find(fileName) != sound.end());
+	if (sound.find(fileName) != sound.end())
 	{
 		return 0;
 	}
+
 	return wav::Load(fileName, sound[fileName].wave, sound[fileName].info);
 }
 
@@ -49,10 +50,8 @@ unsigned int Loader::GetFrame(const std::string & fileName)
 {
 	if (sound.find(fileName) != sound.end())
 	{
-		//Ø‚è—Ç‚­0.01•b
 		return (sound[fileName].info.sample * sound[fileName].info.channel) / 100;
 	}
 
 	return 0;
 }
-

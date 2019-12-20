@@ -2,18 +2,18 @@
 #include<string>
 #include<xaudio2.h>
 #include<thread>
+#include<vector>
 
+struct  Voice;
 
-class Effecter 
+class Effecter
 {
+	friend Voice;
 public:
 	Effecter();
 	~Effecter();
 
 private:
-	// スレッド
-	std::thread th;
-
 	// スレッド終了フラグ
 	bool threadEnd;
 
@@ -21,4 +21,11 @@ private:
 	void Stream(void);
 
 	XAUDIO2_FILTER_TYPE* filter;
+
+	//スレッド
+	std::thread th;
+
+	//ミューテックス
+	std::mutex mtx;
+
 };

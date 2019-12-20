@@ -1,5 +1,6 @@
 #include "Effect.h"
 #include "../Info.h"
+#include "../Voice/Voice.h"
 
 
 
@@ -12,7 +13,6 @@ Filter::Filter()
 	memset(&b[0], 0, sizeof(b));
 	a[0] = 1.0f;
 	b[0] = 1.0f;
-
 }
 
 //デストラクタ
@@ -58,11 +58,11 @@ void Filter::Execution(const std::vector<float>& in)
 	}
 }
 
-Volume::Volume()
-{
-	volume = 1.0f;
-}
-
-Volume::~Volume()
-{
-}
+//Volume::Volume()
+//{
+//	volume = 1.0f;
+//}
+//
+//Volume::~Volume()
+//{
+//}

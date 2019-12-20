@@ -1,10 +1,12 @@
-#include "Effecter.h"
 #include <iostream>
 #include <vector>
 #include <thread>
 #include <mutex>
-#include "../Voice/Voice.h"
+#include "Effecter.h"
 #include "../Effect/Effect.h"
+#include "../Voice/Voice.h"
+
+
 
 
 
@@ -12,11 +14,13 @@ Effecter::Effecter() : threadEnd(false)
 {
 	if (th.joinable() == false)
 	{
+		std::lock_guard<std::mutex>lock(mtx);
 		th = std::thread(&Effecter::Stream, this);
+
 	}
 }
 
-Effecter ::~Effecter()
+Effecter::~Effecter()
 {
 	threadEnd = true;
 	if (th.joinable() == true)

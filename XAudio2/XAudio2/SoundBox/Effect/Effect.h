@@ -3,27 +3,12 @@
 #include <vector>
 
 
-#define MPI  3.14159265
-
 
 class Effect
 {
 
 public:
 	
-};
-
-
-class Volume :public Effect
-{
-public:
-	Volume();
-	~Volume();
-
-	
-private:
-	//‰¹—Ê
-	float volume;
 };
 
 
@@ -62,3 +47,14 @@ public:
 	float a[2];
 	float b[2];
 };
+
+//class Volume
+//{
+//public:
+//	Volume();
+//	~Volume();
+//
+//private:
+//	//‰¹—Ê
+//	float volume;
+//};
