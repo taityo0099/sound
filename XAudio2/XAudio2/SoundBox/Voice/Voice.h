@@ -13,7 +13,7 @@
 struct IXAudio2SourceVoice;
 class VoiceCallback;
 
-class Voice : Voice
+class Voice
 {
 	friend VoiceCallback;
 public:

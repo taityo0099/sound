@@ -30,6 +30,8 @@ Voice::Voice(const std::string & fileName) : read(0),loop(false),end(false),voic
 
 	Load(fileName);
 	CreateVoice();
+
+	volume = 1.0f;
 }
 
 // デストラクタ
