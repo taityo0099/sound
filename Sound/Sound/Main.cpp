@@ -38,7 +38,6 @@ int main()
 	auto hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 	_ASSERT(hr == S_OK);
 
-	//Filter test;
 
 	bool play = false;
 	bool key = false;
