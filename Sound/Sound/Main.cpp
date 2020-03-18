@@ -43,7 +43,7 @@ int main()
 	bool key = false;
 
 	XAudio2::Get().EngineStart();
-	Voice* voice = new Voice("bgm/Sunday.wav");
+	Voice* voice = new Voice("bgm/Dance1.wav");
 
 
 
@@ -83,15 +83,15 @@ int main()
 			}
 			if (GetKeyState(VK_LCONTROL) & 0x80)
 			{
-				voice->LowPass(1000);
+				voice->LowPass(500);
 			}
 			if (GetKeyState(VK_LSHIFT) & 0x80)
 			{
-				voice->HighPass(10000);
+				voice->HighPass(20000);
 			}
 			if (GetKeyState(VK_RSHIFT) & 0x80)
 			{
-				voice->LowPass(60000);
+				voice->LowPass(50000);
 			}
 		}
 		else
